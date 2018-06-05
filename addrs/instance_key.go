@@ -68,3 +68,16 @@ func (k StringKey) String() string {
 	// slightly different than HCL's, but we'll accept it for now.
 	return fmt.Sprintf("[%q]", string(k))
 }
+
+// InstanceKeyType represents the different types of instance key that are
+// supported. Usually it is sufficient to simply type-assert an InstanceKey
+// value to either IntKey or StringKey, but this type and its values can be
+// used to represent the types themselves, rather than specific values
+// of those types.
+type InstanceKeyType rune
+
+const (
+	NoKeyType     InstanceKeyType = 0
+	IntKeyType    InstanceKeyType = 'I'
+	StringKeyType InstanceKeyType = 'S'
+)
